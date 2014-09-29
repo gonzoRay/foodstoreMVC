@@ -1,0 +1,11 @@
+<h2>Add Recipe</h2>
+<form class="form-horizontal" role="form">
+    <div class="form-group form-inline">
+        <label for="recipeName" class="col-sm-2 control-label">Recipe Name:</label>
+        <input class="form-control" id="recipeName" type="text" ng-model="newRecipe.recipeName">
+        <input type="submit" class="btn btn-success" value="Add Recipe" ng-click="addRecipe()">
+    </div>
+
+    <strong>Adding new recipe: </strong> <em>{{newRecipe.recipeName}}</em>
+
+</form>

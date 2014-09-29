@@ -1,0 +1,11 @@
+<h2>Add Product</h2>
+<form class="form-horizontal" role="form">
+    <div class="form-group form-inline">
+        <label for="productName" class="col-sm-2 control-label">Product Name:</label>
+        <input class="form-control" id="productName" type="text" ng-model="newProduct">
+        <input type="submit" class="btn btn-success" value="Add Product" ng-click="addProduct()">
+    </div>
+
+    <strong>Adding new product: </strong> <em>{{newProduct}}</em>
+
+</form>

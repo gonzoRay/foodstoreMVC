@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "categoryName": "Asian"
+    },
+    {
+        "id": 2,
+        "categoryName": "Spicy"
+    },
+    {
+        "id": 3,
+        "categoryName": "Healthy"
+    },
+    {
+        "id": 4,
+        "categoryName": "American"
+    },
+    {
+        "id": 5,
+        "categoryName": "Italian"
+    }
+]

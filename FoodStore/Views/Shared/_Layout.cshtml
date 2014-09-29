@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html ng-app="foodstore">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Store</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/ng")
+    @Scripts.Render("~/bundles/app")
+
+</head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Food Store</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            
+            <div class="blog-header">
+                <h1 class="blog-title">Food Store</h1>
+                <p class="blog-description">An angular sandbox app about food!</p>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="sidebar-module sidebar-module-inset">
+                        <h4>About</h4>
+                        <p>At food store, we like food.  Lots of it.  Feed us.</p>
+                    </div>
+                    <div class="sidebar-module">
+                        <h4>Navigation</h4>
+                        <ol class="list-unstyled">
+                            <li><a href="#products">Products</a></li>
+                            <li><a href="#categories">Categories</a></li>
+                            <li><a href="#recipes">Recipes</a></li>
+                        </ol>
+                    </div>
+                    <div class="sidebar-module">
+                        <h4>Administration</h4>
+                        <ol class="list-unstyled">
+                            <li><a href="#products/add">Add product</a></li>
+                            <li><a href="#categories/add">Add category</a></li>
+                            <li><a href="#recipes/add">Add recipe</a></li>
+                            <li><a href="#resetdata">Reset data cache</a></li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="col-sm-9 col-sm-offset-1">
+                    <div class="container">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+        @RenderSection("scripts", required: false)
+    </body>
+</html>
