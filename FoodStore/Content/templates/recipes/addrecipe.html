@@ -1,11 +1,50 @@
 <h2>Add Recipe</h2>
-<form class="form-horizontal" role="form">
-    <div class="form-group form-inline">
-        <label for="recipeName" class="col-sm-2 control-label">Recipe Name:</label>
-        <input class="form-control" id="recipeName" type="text" ng-model="newRecipe.recipeName">
-        <input type="submit" class="btn btn-success" value="Add Recipe" ng-click="addRecipe()">
+<form role="form">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="recipeName" class="control-label">Recipe Name</label>
+                    <input class="form-control" id="recipeName" type="text" ng-model="newRecipe.recipeName">
+                </div>
+                <div class="form-group">
+                    <label for="description" class="control-label">Description</label>
+                    <textarea class="form-control" id="description" ng-model="newRecipe.description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="directions" class="control-label">Directions</label>
+                    <textarea class="form-control" id="directions" ng-model="newRecipe.directions"></textarea>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group form-inline">
+                    <label for="categories" class="control-label">Categories</label>
+                    <br>
+                    <select class="form-control" id="categories" ng-model="selectedCategory"
+                            ng-options="item.categoryName for item in availableCategories">
+                        <option value="">-- add relevant --</option>
+                    </select>
+                    <button class="btn btn-default" id="addCategory" ng-click="addCategory()">Add</button>
+                </div>
+                <div class="form-group">
+                    <div class="list-header">
+                        <ul class="list-inline" style="display:inline" ng-model="newRecipe.categories"
+                                ng-repeat="category in newRecipe.categories">
+                            <li class="category-tag">{{category.categoryName}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group  pull-right">
+                <input type="submit" class="btn btn-success" value="Add Recipe" ng-click="addRecipe()">
+            </div>
+        </div>
     </div>
 
-    <strong>Adding new recipe: </strong> <em>{{newRecipe.recipeName}}</em>
 
 </form>
