@@ -4,33 +4,34 @@
     angular.module('foodstore')
         .controller('CategoriesController',
         [
-            '$scope',
             '$http',
             '$location',
-            'localStorageService',
+            'LocalStorageService',
+            'FunctionsService',
             CategoriesController
         ]);
 
-    function CategoriesController($scope, $http, $location, localStorage) {
+    function CategoriesController($http, $location, localStorage, func) {
+        var vm = this;
         var categoryStorageKey = 'CATEGORY-STORAGE-KEY';
         initScope();
 
         function initScope() {
-            $scope.newCategory = '';
-            $scope.categories = localStorage.Get(categoryStorageKey);
-            $scope.redirectAddCategories = function() {
+            vm.newCategory = '';
+            vm.categories = localStorage.Get(categoryStorageKey);
+            vm.existingCategoryId = -1;
+            vm.redirectAddCategories = function() {
                 $location.path('/categories/add');
             };
 
-            if ($scope.categories === null || $scope.categories.length < 1) {
-
+            if (vm.categories === null || vm.categories.length < 1) {
                 $http.get('/Content/data/categories.json')
                     .success(function (data) {
-                        $scope.categories = data;
+                        vm.categories = data;
 
-                        if($scope.categories !== null && $scope.categories.length > 0) {
+                        if(vm.categories !== null && vm.categories.length > 0) {
                             //Save initial data to localStorage "cache"
-                            localStorage.Put(categoryStorageKey, $scope.categories);
+                            localStorage.Put(categoryStorageKey, vm.categories);
                         }
                     })
                     .error(function (error) {
@@ -39,27 +40,37 @@
             }
         }
 
-        $scope.addCategory = function () {
-            var newCategory = $scope.newCategory.trim();
+        vm.addCategory = function () {
+            var newCategory = vm.newCategory.trim();
 
             //Check for empty
             if (newCategory.length === 0) {
                 return;
             }
 
+            //Check for existing item w/ same name
+            vm.existingCategoryId = func.Array.IndexWhere(vm.categories, function(value) {
+               return newCategory === value.categoryName;
+            });
+
+            if(vm.existingCategoryId > -1) {
+                console.log('category: ', newCategory, ' already exists');
+                return;
+            }
+
             //Add new category to our categories array
-            var lastId = $scope.categories[$scope.categories.length - 1].id;
-            $scope.categories.push({
+            var lastId = vm.categories[vm.categories.length - 1].id;
+            vm.categories.push({
                 id: ++lastId,
                 categoryName: newCategory
             });
 
             //Persist products array
-            localStorage.Put(categoryStorageKey, $scope.categories);
-            $scope.newCategory = '';
+            localStorage.Put(categoryStorageKey, vm.categories);
+            vm.newCategory = '';
         };
 
-        $scope.clearCacheData = function() {
+        vm.clearCacheData = function() {
             localStorage.empty(categoryStorageKey);
         };
     }
