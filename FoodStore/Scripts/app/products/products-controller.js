@@ -18,6 +18,10 @@
         function initScope() {
             $scope.newProduct = '';
             $scope.products = localStorage.Get(productStorageKey);
+            $scope.redirectAddProducts = function() {
+                $location.path('/products/add');
+            };
+
 
             if ($scope.products === null || $scope.products.length < 1) {
 
@@ -60,7 +64,7 @@
             //Persist products array
             localStorage.Put(productStorageKey, $scope.products);
             $scope.newProduct = '';
-            $location.path('/products');
+            //$location.path('/products');
 
         };
 

@@ -1,4 +1,15 @@
 <h2 class="section-header">Categories</h2>
-<ul ng-repeat="category in categories" class="list-indented list-unstyled">
-    <li><li><a href="#">{{category.categoryName}}</a></li>
-</ul>
+<div class="fluid container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="pull-right">
+                <button class="btn btn-default" ng-click="redirectAddCategories()">Add Categories</button>
+            </div>
+            <div>&nbsp;</div>
+            <ul ng-repeat="category in categories" class="list-indented list-unstyled">
+                <li>
+                <li>{{category.categoryName}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

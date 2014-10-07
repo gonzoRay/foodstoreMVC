@@ -1,12 +1,21 @@
 <h2>{{currentRecipe.recipeName}}</h2>
 
-<div class="container">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <button class="btn btn-danger" ng-click="removeRecipe()">Remove Recipe</button>
+            </div>
+            <div>&nbsp;</div>
+        </div>
+    </div>
+
     Description:
     <blockquote>
         {{currentRecipe.description}}
     </blockquote>
 
-    <div class="container-fluid">
+
         <div class="row">
             <div class="col-md-12">
                 <div class="list-header">

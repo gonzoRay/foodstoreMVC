@@ -200,10 +200,12 @@
     <Content Include="Scripts\app\!foodstore.js" />
     <Content Include="Scripts\app\admin\admin-controller.js" />
     <Content Include="Scripts\app\categories\categories-controller.js" />
-    <Content Include="Scripts\app\common\local-storage-service.js" />
-    <Content Include="Scripts\app\common\unsafe-filter.js" />
     <Content Include="Scripts\app\products\products-controller.js" />
-    <Content Include="Scripts\app\recipes\recipe-controllers.js" />
+    <Content Include="Scripts\app\recipes\recipe-list-controller.js" />
+    <Content Include="Scripts\app\recipes\recipe-detail-controller.js" />
+    <Content Include="Scripts\app\utilities\functions-service.js" />
+    <Content Include="Scripts\app\utilities\local-storage-service.js" />
+    <Content Include="Scripts\app\utilities\unsafe-filter.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\errors.json" />

@@ -1,4 +1,12 @@
 <h2 class="section-header">Recipes</h2>
-<ul ng-repeat="recipe in recipes" class="list-indented list-unstyled">
-    <li><a href="#/recipes/{{recipe.id}}">{{recipe.recipeName}}</a></li>
-</ul>
+<div class="row">
+    <div class="col-md-8">
+        <div class="pull-right">
+            <button class="btn btn-default" ng-click="redirectAddRecipes()">Add Recipes</button>
+        </div>
+        <div>&nbsp;</div>
+        <ul ng-repeat="recipe in recipes" class="list-indented list-unstyled">
+            <li><a href="#/recipes/{{recipe.id}}">{{recipe.recipeName}}</a></li>
+        </ul>
+    </div>
+</div>

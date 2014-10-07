@@ -14,14 +14,14 @@
                 </div>
                 <div class="form-group">
                     <label for="directions" class="control-label">Directions</label>
-                    <textarea class="form-control" id="directions" ng-model="newRecipe.directions"></textarea>
+                    <textarea class="form-control" id="directions" style="height:200px;" ng-model="newRecipe.directions"></textarea>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group form-inline">
                     <label for="categories" class="control-label">Categories</label>
                     <br>
-                    <select class="form-control" id="categories" ng-model="selectedCategory"
+                    <select class="form-control" id="categories" ng-model="selectedCategories"
                             ng-options="item.categoryName for item in availableCategories">
                         <option value="">-- add relevant --</option>
                     </select>
@@ -31,13 +31,14 @@
                     <div class="list-header">
                         <ul class="list-inline" style="display:inline" ng-model="newRecipe.categories"
                                 ng-repeat="category in newRecipe.categories">
-                            <li class="category-tag">{{category.categoryName}}</li>
+                            <li class="category-tag">{{category}}</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div>&nbsp;</div>
     <div class="row">
         <div class="col-md-12">
             <div class="form-group  pull-right">

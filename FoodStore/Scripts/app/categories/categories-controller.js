@@ -18,6 +18,9 @@
         function initScope() {
             $scope.newCategory = '';
             $scope.categories = localStorage.Get(categoryStorageKey);
+            $scope.redirectAddCategories = function() {
+                $location.path('/categories/add');
+            };
 
             if ($scope.categories === null || $scope.categories.length < 1) {
 
@@ -54,7 +57,6 @@
             //Persist products array
             localStorage.Put(categoryStorageKey, $scope.categories);
             $scope.newCategory = '';
-            $location.path('/categories');
         };
 
         $scope.clearCacheData = function() {

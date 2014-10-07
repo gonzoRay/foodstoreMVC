@@ -1,6 +1,6 @@
 ﻿"use strict";
 (function () {
-    angular.module('foodstore', ['ngRoute', 'ngResource', 'recipeControllers'])
+    angular.module('foodstore', ['ngRoute', 'ngResource'])
         .config(function ($routeProvider, $locationProvider) {
             $locationProvider.html5mode = true;
             $routeProvider

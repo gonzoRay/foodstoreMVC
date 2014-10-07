@@ -5,7 +5,10 @@
         <input class="form-control" id="categoryName" type="text" ng-model="newCategory">
         <input type="submit" class="btn btn-success" value="Add Category" ng-click="addCategory()">
     </div>
-
-    <strong>Adding new category: </strong> <em>{{newCategory}}</em>
-
 </form>
+<div>&nbsp;</div>
+<div>
+    <ul ng-repeat="category in categories">
+        <li>{{category.categoryName}}</li>
+    </ul>
+</div>

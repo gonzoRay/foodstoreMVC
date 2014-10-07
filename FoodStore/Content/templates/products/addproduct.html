@@ -5,7 +5,10 @@
         <input class="form-control" id="productName" type="text" ng-model="newProduct">
         <input type="submit" class="btn btn-success" value="Add Product" ng-click="addProduct()">
     </div>
-
-    <strong>Adding new product: </strong> <em>{{newProduct}}</em>
-
 </form>
+
+<div>
+    <ul ng-repeat="product in products | orderBy: '-id'">
+        <li>{{product.productName}}</li>
+    </ul>
+</div>
