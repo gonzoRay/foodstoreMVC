@@ -23,9 +23,10 @@
         ////
         var _service = {
             //Exposed API methods
-            AddCategory: addCategory,
+            Add: addCategory,
             Exists: doesCategoryExist,
-            RemoveCategory: removeCategory,
+            Remove: removeCategory,
+            Empty: empty,
             GetAll: getAllCategories,
             LoadFromCabinet: loadCategories
         };
@@ -35,7 +36,7 @@
         // Functions
         ////
         function addCategory(newCategory) {
-            var categories = getAllCategories();
+            var categories = getAllCategories() || [];
 
             //Check for empty
             if (newCategory.length === 0) {
@@ -43,7 +44,10 @@
             }
 
             //Add new category to our categories array
-            var lastId = categories[categories.length - 1].id;
+            var lastId = 0;
+            if (categories !== null && categories.length > 0) {
+                lastId = categories[categories.length - 1].id;
+            }
             categories.push({
                 id: ++lastId,
                 categoryName: newCategory
@@ -70,6 +74,10 @@
             console.log('removeCategory not yet implemented');
         }
 
+        function empty() {
+            localStorage.Empty(categoryStorageKey);
+        }
+
         function getAllCategories() {
             return localStorage.Get(categoryStorageKey);
         }
@@ -89,11 +97,6 @@
                     console.log('Error getting category list: ', error);
                 });
         }
-
-        ////
-        // Initialization (HACK)
-        ////
-        loadCategories();
 
     }
 })();

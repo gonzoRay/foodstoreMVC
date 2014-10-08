@@ -23,9 +23,10 @@
         ////
         var _service = {
             //Exposed API methods
-            AddProduct: addProduct,
+            Add: addProduct,
             Exists: doesProductExist,
-            RemoveProduct: removeProduct,
+            Remove: removeProduct,
+            Empty: empty,
             GetAll: getAllProducts,
             LoadFromCabinet: loadProducts
 
@@ -36,7 +37,7 @@
         // Functions
         ////
         function addProduct(newProduct) {
-            var products = getAllProducts();
+            var products = getAllProducts() || [];
 
             //Check for empty
             if (newProduct.length === 0) {
@@ -44,7 +45,11 @@
             }
 
             //Add new product to our products array
-            var lastId = products[products.length - 1].id;
+            var lastId = 0;
+            if (products !== null && products.length > 0) {
+                lastId = products[products.length - 1].id;
+            }
+
             products.push({
                 id: ++lastId,
                 productName: newProduct
@@ -71,6 +76,10 @@
             console.log('removeProduct not yet implemented');
         }
 
+        function empty() {
+            localStorage.Empty(productStorageKey);
+        }
+
         function getAllProducts() {
             return localStorage.Get(productStorageKey);
         }
@@ -90,13 +99,6 @@
                     console.log('Error getting product list: ', error);
                 });
         }
-
-
-        ////
-        // Initialization (HACK)
-        ////
-        loadProducts();
-
     }
 })();
 

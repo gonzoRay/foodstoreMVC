@@ -6,6 +6,9 @@
             <div class="pull-right">
                 <button class="btn btn-default" ng-click="vm.redirectAddProducts()">Add Products</button>
             </div>
+            <div class="pull-left">
+                <span ng-show="vm.products.length === 0">No products found.</span>
+            </div>
             <div>&nbsp;</div>
             <ul ng-repeat="product in vm.products | orderBy: '-id'" class="list-indented list-unstyled">
                 <li>

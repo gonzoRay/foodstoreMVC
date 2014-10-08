@@ -2,10 +2,11 @@
 <div class="fluid container">
     <div class="row top-buffer">
         <div class="col-md-12">
-            <form class="form-horizontal" role="form">
+            <form name="productForm" class="form-horizontal" role="form" novalidate>
                 <div class="form-group form-inline">
-                    <input class="form-control" id="productName" type="text" ng-model="vm.newProductName">
+                    <input class="form-control" name="productName" id="productName" type="text" ng-required="true" ng-model="vm.newProductName">
                     <input type="submit" class="btn btn-success" value="Add Product" ng-click="vm.addProduct()">
+                    <p ng-show="productForm.productName.$invalid && !productForm.productName.$pristine" class="help-block">Product name is required</p>
                 </div>
             </form>
         </div>

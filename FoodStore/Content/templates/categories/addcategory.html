@@ -1,11 +1,12 @@
-<h2>Add Category</h2>
+<h2>Add Recipe Category</h2>
 <div class="fluid container">
     <div class="row top-buffer">
         <div class="col-md-12">
-            <form name="addCategoryForm" class="form-horizontal" role="form">
+            <form name="categoryForm" class="form-horizontal" role="form" novalidate>
                 <div class="form-group form-inline">
-                    <input class="form-control" id="categoryName" type="text" ng-model="vm.newCategoryName">
+                    <input class="form-control" name="categoryName" id="categoryName" type="text" ng-required="true" ng-model="vm.newCategoryName">
                     <input type="submit" class="btn btn-success" value="Add Category" ng-click="vm.addCategory()">
+                    <p ng-show="categoryForm.categoryName.$invalid && !categoryForm.categoryName.$pristine" class="help-block">Category name is required</p>
                 </div>
             </form>
         </div>

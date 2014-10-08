@@ -17,26 +17,37 @@
 
         function init() {
             vm.newCategoryName = '';
-            vm.products = product.GetAll() || product.LoadFromCabinet() || [];
+            vm.products = product.GetAll() || [];
             vm.productExists = false;
-            vm.redirectAddProducts = function () {
-                $location.path('/products/add');
-            };
-
-            vm.addProduct = function () {
-                var newProduct = vm.newProductName.trim();
-                vm.productExists = product.Exists(newProduct);
-                if (vm.productExists) {
-                    console.log(newProduct, 'already exists');
-                    vm.lastTakenProductName = newProduct;
-                    vm.newProductName = '';
-                    return;
-                }
-                product.AddProduct(newProduct);
-                vm.newProductName = '';
-                vm.products = product.GetAll();
-            };
         }
+
+        ////
+        // Controller actions
+        ////
+        vm.redirectAddProducts = function () {
+            $location.path('/products/add');
+        };
+
+        vm.addProduct = function () {
+            var newProduct = vm.newProductName ? vm.newProductName.trim() : '';
+
+            //Check if empty
+            if(!newProduct || newProduct.length < 1) {
+                console.log('empty product name');
+                return;
+            }
+
+            vm.productExists = product.Exists(newProduct);
+            if (vm.productExists) {
+                console.log(newProduct, 'already exists');
+                vm.lastTakenProductName = newProduct;
+                vm.newProductName = '';
+                return;
+            }
+            product.Add(newProduct);
+            vm.newProductName = '';
+            vm.products = product.GetAll();
+        };
     }
 })();
 

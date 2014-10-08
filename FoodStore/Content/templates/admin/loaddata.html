@@ -1,12 +1,11 @@
-<h2>Reset Data Cache</h2>
+<h2>Load Data Cache</h2>
 
-<p class="alert alert-danger">
-    <strong>Warning:</strong> Are you sure you wish to reset the cache data? All products, categories and recipes reset will
-    be lost.
+<p class="alert alert-warning">
+    <strong>Warning:</strong> This will reload the data cache from the default JSON files. Any extra items will be lost.
 </p>
 
 <div class="list-header">
-    <h4>Select the cache items to reset:</h4>
+    <h4>Select the cache items to load:</h4>
 </div>
 
 <div class="container-fluid">
@@ -23,11 +22,11 @@
                     </li>
                 </ul>
                 <div class="pull-left">
-                    <button class="btn btn-primary" ng-click="vm.resetData()">Reset Cache</button>
+                    <button class="btn btn-primary" ng-click="vm.loadData()">Load Data</button>
                 </div>
 
                 <div class="pull-right">
-                    <span ng-show="vm.resetCompleted" class="alert alert-info">Cache data has been reset to defaults.</span>
+                    <span ng-show="vm.loadCompleted" class="alert alert-info">Cache data has been loaded.</span>
                 </div>
             </form>
         </div>

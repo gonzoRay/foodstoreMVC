@@ -1,9 +1,12 @@
-<h2 class="section-header">Categories</h2>
+<h2 class="section-header">Recipe Categories</h2>
 <div class="fluid container">
     <div class="row">
         <div class="col-md-8">
             <div class="pull-right">
                 <button class="btn btn-default" ng-click="vm.redirectAddCategories()">Add Categories</button>
+            </div>
+            <div class="pull-left">
+                <span ng-show="vm.categories.length === 0">No categories found.</span>
             </div>
             <div>&nbsp;</div>
             <ul ng-repeat="category in vm.categories | orderBy: '-id'" class="list-indented list-unstyled">

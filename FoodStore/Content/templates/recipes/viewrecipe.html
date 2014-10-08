@@ -35,10 +35,10 @@
             <div class="col-md-4">
                 <div>
                     <div class="list-header">Ingredients:</div>
-                    <ul class="list-indented list-unstyled" ng-repeat="product in vm.currentRecipe.ingredients">
+                    <ul class="list-indented list-unstyled" ng-repeat="ingredient in vm.currentRecipe.ingredients">
                         <li>
-                            <dt>{{product.name}}</dt>
-                            <dd>{{product.quantity}} {{product.unit}}</dd>
+                            <dt>{{ingredient.name}}</dt>
+                            <dd>{{ingredient.quantity}} {{ingredient.unit}}</dd>
                         </li>
                     </ul>
                 </div>

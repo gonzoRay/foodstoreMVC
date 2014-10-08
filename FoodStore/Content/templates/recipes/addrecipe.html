@@ -1,30 +1,45 @@
-<h2>Add Recipe</h2>
-<form role="form">
+<h2>Add New Recipe</h2>
+<form name="recipeForm" role="form" novalidate>
     <div class="container-fluid">
         <div class="row top-buffer">
-            <span class="text-warning" ng-show="vm.existingRecipeId > -1">A recipe by this name already exists.</span>
+            <span class="text-warning" ng-show="vm.recipeNameExists">A recipe by this name already exists.</span>
         </div>
-        <div>&nbsp;</div>
-        <div class="row">
+        <div class="row top-buffer">
             <div class="col-md-6">
-                <div class="form-group">
+                <div class="form-group"
+                     ng-class="{ 'has-error' : recipeForm.recipeName.$invalid && !recipeForm.recipeName.$pristine }">
                     <label for="recipeName" class="control-label">Recipe Name</label>
-                    <input class="form-control" id="recipeName" type="text" ng-model="vm.newRecipe.recipeName">
+                    <input class="form-control" id="recipeName" name="recipeName" type="text" ng-required="true"
+                           ng-model="vm.newRecipe.recipeName">
+
+                    <p ng-show="recipeForm.recipeName.$invalid && !recipeForm.recipeName.$pristine" class="help-block">
+                        Recipe name is required</p>
                 </div>
-                <div class="form-group">
+                <div class="form-group"
+                     ng-class="{ 'has-error' : recipeForm.description.$invalid && !recipeForm.description.$pristine }">
                     <label for="description" class="control-label">Description</label>
-                    <textarea class="form-control" id="description" ng-model="vm.newRecipe.description"></textarea>
+                    <textarea class="form-control" name="description" id="description" ng-required="true"
+                              ng-model="vm.newRecipe.description"></textarea>
+
+                    <p ng-show="recipeForm.description.$invalid && !recipeForm.description.$pristine"
+                       class="help-block">Description is required</p>
                 </div>
-                <div class="form-group">
+                <div class="form-group"
+                     ng-class="{ 'has-error' : recipeForm.directions.$invalid && !recipeForm.directions.$pristine }">
                     <label for="directions" class="control-label">Directions</label>
-                    <textarea class="form-control" id="directions" style="height:200px;" ng-model="vm.newRecipe.directions"></textarea>
+                    <textarea class="form-control" name="directions" id="directions" style="height:200px;"
+                              ng-required="true" ng-model="vm.newRecipe.directions"></textarea>
+
+                    <p ng-show="recipeForm.directions.$invalid && !recipeForm.directions.$pristine" class="help-block">
+                        Directions are required</p>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 table-bordered">
                 <div class="form-group form-inline">
                     <label for="categories" class="control-label">Categories</label>
                     <br>
-                    <select class="form-control" id="categories" ng-model="vm.selectedCategories"
+                    <select class="form-control" name="categories" id="categories"
+                            ng-model="vm.selectedCategories"
                             ng-options="item.categoryName for item in vm.availableCategories">
                         <option value="">-- add relevant --</option>
                     </select>
@@ -33,8 +48,45 @@
                 <div class="form-group">
                     <div class="list-header">
                         <ul class="list-inline" style="display:inline" ng-model="vm.newRecipe.categories"
-                                ng-repeat="category in vm.newRecipe.categories">
+                            ng-repeat="category in vm.newRecipe.categories">
                             <li class="category-tag">{{category}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 top-buffer">
+                <div class="form-group">
+                    <label for="products" class="control-label">Ingredients</label>
+                    <select class="form-control" id="products" name="products"
+                            ng-model="vm.selectedIngredients"
+                            ng-options="item.productName for item in vm.availableProducts" style="width:200px;">
+                        <option value="">--choose an ingredient--</option>
+                    </select>
+                </div>
+                <div class="form-group form-inline">
+                    <label for="quantity" class="control-label">Quantity</label>
+                    <br />
+                    <input type="text" id="quantity" name="quantity" style="width:50px;" ng-model="vm.quantity">
+                </div>
+                <div class="form-group form-inline">
+                    <label for="unit" class="control-label">Units (optional)</label>
+                    <br />
+                    <!--<select class="form-control" id="unit" name="unit"
+                            ng-model="vm.availableUnits"
+                            ng-options="item.unit for item in vm.availableUnits">
+                            <option value="">--choose a unit--</option>
+                    </select>-->
+                    <input class="form-control" type="text" id="unit" name="unit" ng-model="vm.unit" style="width:90px;">
+                    <button class="btn btn-default" id="addIngredient" ng-click="vm.addIngredient()">Add</button>
+                </div>
+                <div class="form-group">
+                    <div class="list-header">
+                        <ul class="list-unstyled" ng-model="vm.newRecipe.ingredients"
+                            ng-repeat="ingredient in vm.newRecipe.ingredients">
+                            <li>
+                                <dt>{{ingredient.name}}</dt>
+                                <dd>{{ingredient.quantity}} {{ingredient.unit}}</dd>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -45,7 +97,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group  pull-right">
-                <input type="submit" class="btn btn-success" value="Add Recipe" ng-click="vm.addRecipe()">
+                <input type="submit" class="btn btn-success" value="Add Recipe" ng-disabled="recipeForm.$invalid"
+                       ng-click="vm.addRecipe()">
             </div>
         </div>
     </div>

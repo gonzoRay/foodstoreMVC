@@ -26,6 +26,8 @@ var msi = (function (msi) {
         var defaults = {
             parent: $('body'),
             prompt: 'Are you sure?',
+            affirmative: 'Yes',
+            negative: 'No',
             dimensions: { width: 200, height: 150 },
             useOverlay: true,
             callback: _noop
@@ -148,12 +150,12 @@ var msi = (function (msi) {
         var self = instance;
         var namespace = _eventNamespace.replace('{0}', self.id);
 
-        var $deleteButton = $('<button type="button" class="btn-xs btn-primary">Remove</button>');
+        var $deleteButton = $('<button type="button" class="btn-xs btn-primary">' + self.options.affirmative + '</button>');
         $deleteButton.on('click' + namespace, function() {
             callback(true);
         });
 
-        var $cancelButton = $('<button type="button" class="btn-xs btn">Cancel</button>');
+        var $cancelButton = $('<button type="button" class="btn-xs btn">' + self.options.negative + '</button>');
         $cancelButton.on('click' + namespace, function() {
             callback(false);
         });

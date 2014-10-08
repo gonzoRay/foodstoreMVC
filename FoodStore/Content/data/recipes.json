@@ -3,7 +3,7 @@
         "id": 1,
         "recipeName": "Spicy Stir Fry",
         "description": "A healthy spicy dish full of delightfully bright, crunch and oriental zest.",
-        "directions": "<p>Start by dicing the bell pepper and onion. Then mince the garlic and ginger.</p><p>Heat a large skillet to medium high heat and add olive oil, then garlic, ginger and red pepper flakes. Stir with a wooden spoon until garlic is golden brown.</p><p>Cut the carrots into matchsticks and add to pan along with onion, soy sauce and cashews. Stir over a medium high heat until the onion begins to wilt and then add the rice vinegar and baby bok choy.</p><p>Serve with your favorite rice</p>",
+        "directions": "<p>Start by dicing the bell pepper and onion. Then mince the garlic and ginger.</p><p>Heat a large skillet to medium high heat and add olive oil, then garlic, ginger and red pepper flakes. Stir with a wooden spoon until garlic is golden brown.</p><p>Cut the carrots into matchsticks and add to pan along with onion, soy sauce and cashews. Stir over a medium high heat until the onion begins to wilt and then add the rice vinegar and baby bok choy.</p><p>Serve with your favorite rice.</p>",
         "categories": [
             "Asian",
             "Healthy"
@@ -11,52 +11,52 @@
         "ingredients": [
             {
                 "name": "Bell Pepper",
-                "quantity": 4,
+                "quantity": "3",
                 "unit": ""
             },
             {
                 "name": "Onion",
-                "quantity": 1,
+                "quantity": "1",
                 "unit": ""
             },
             {
                 "name": "Red Pepper Flakes",
-                "quantity": 1,
+                "quantity": "1",
                 "unit": "pinch"
             },
             {
                 "name": "Olive Oil",
-                "quantity": 4,
+                "quantity": "4",
                 "unit": "tbsp"
             },
             {
                 "name": "Ginger",
-                "quantity": 1,
+                "quantity": "2",
                 "unit": "piece(s)"
             },
             {
                 "name": "Baby Bok Choy",
-                "quantity": 4,
+                "quantity": "4",
                 "unit": "piece(s)"
             },
             {
                 "name": "Cashews",
-                "quantity": 4,
+                "quantity": "6",
                 "unit": "tbsp"
             },
             {
                 "name": "Carrots",
-                "quantity": 2,
+                "quantity": "2",
                 "unit": ""
             },
             {
                 "name": "Soy Sauce",
-                "quantity": 1,
+                "quantity": "1",
                 "unit": "cup(s)"
             },
             {
                 "name": "Rice Vinegar",
-                "quantity": 1,
+                "quantity": "1",
                 "unit": "cup(s)"
             }
         ]
@@ -65,7 +65,7 @@
         "id": 2,
         "recipeName": "Shrimp Creole Sautee",
         "description": "True American fare. Accents of spicy, saucy and color fill your palate with the zeal of New Orleans.",
-        "directions": "<p>Start by dicing the bell pepper and onion. Then mince the garlic and ginger.</p><p>Heat a large skillet to medium high heat and add olive oil, then garlic, ginger and red pepper flakes. Stir with a wooden spoon until garlic is golden brown.</p><p>Cut the carrots into matchsticks and add to pan along with onion, soy sauce and cashews. Stir over a medium high heat until the onion begins to wilt and then add the rice vinegar and baby bok choy.</p><p>Serve with your favorite rice</p>",
+        "directions": "<p>Start by dicing the bell pepper, onion and celery. Then mince the garlic and shallots.</p><p>Heat a large skillet to medium high heat and add olive oil, then garlic, shallots and red pepper flakes. Stir with a wooden spoon until garlic is golden brown.</p><p>Add tomatoes to pan along with onion, white wine.. Stir over a medium high heat until the shallots begins to wilt and then add the linguine and tomatoes.</p><p>At the end add the shrimp.</p><p>Serve with your favorite rice.</p>",
         "categories": [
             "American",
             "Spicy"
@@ -73,42 +73,86 @@
         "ingredients": [
             {
                 "name": "Butter",
-                "quantity": 1,
+                "quantity": "1",
                 "unit": "piece(s)"
             },
             {
                 "name": "Garlic",
-                "quantity": 2,
-                "unit": "pieces"
+                "quantity": "2",
+                "unit": "piece(s)"
             },
             {
                 "name": "Olive Oil",
-                "quantity": 2,
+                "quantity": "2",
                 "unit": "tbsp"
             },
             {
                 "name": "Cayenne",
-                "quantity": 1,
+                "quantity": "1",
                 "unit": "pinch"
             },
             {
                 "name": "Shrimp",
-                "quantity": 2,
+                "quantity": "2",
                 "unit": "cup(s)"
             },
             {
                 "name": "Tomato",
-                "quantity": 2,
+                "quantity": "2",
                 "unit": "tsp(s)"
             },
             {
                 "name": "Linguine",
-                "quantity": 3,
+                "quantity": "3",
                 "unit": "bundles"
             },
             {
                 "name": "Shallots",
-                "quantity": 1,
+                "quantity": "1",
+                "unit": ""
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "recipeName": "N. Korean BBQ sauce",
+        "description": "Delicious North Korean style",
+        "directions": "VitaMix it up good. Duh.",
+        "categories": ["Spicy", "American", "Asian"],
+        "ingredients": [
+            {
+                "name": "Salt",
+                "quantity": "1",
+                "unit": "pinch"
+            },
+            {
+                "name": "Garlic",
+                "quantity": "2",
+                "unit": "cloves"
+            },
+            {
+                "name": "Rice Vinegar",
+                "quantity": "2",
+                "unit": "cups"
+            },
+            {
+                "name": "Shallots",
+                "quantity": "2",
+                "unit": "tbsp(s)"
+            },
+            {
+                "name": "Cayenne",
+                "quantity": "2",
+                "unit": ""
+            },
+            {
+                "name": "Ginger",
+                "quantity": "2",
+                "unit": "pieces"
+            },
+            {
+                "name": "Tomato",
+                "quantity": "2",
                 "unit": ""
             }
         ]

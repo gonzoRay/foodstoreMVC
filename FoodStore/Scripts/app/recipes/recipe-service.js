@@ -16,7 +16,6 @@
         // Fields
         ////
         var recipeStorageKey = 'RECIPE-STORAGE-KEY';
-        var existingRecipeId = -1;
 
         ////
         // API
@@ -25,6 +24,7 @@
             Add: addRecipe,
             Exists: doesRecipeExist,
             Remove: removeRecipe,
+            Empty: empty,
             GetById: getRecipeById,
             GetAll: getAllRecipes,
             LoadFromCabinet: loadRecipes
@@ -40,7 +40,7 @@
                 return;
             }
 
-            var recipes = getAllRecipes();
+            var recipes = getAllRecipes() || [];
 
             //Add new recipe to our recipes array
             var lastId = 0;
@@ -56,7 +56,7 @@
 
         function doesRecipeExist(recipeName) {
             //Check for existing item w/ same name
-            existingRecipeId = func.Array.IndexWhere(getAllRecipes(), function (value) {
+            var existingRecipeId = func.Array.IndexWhere(getAllRecipes(), function (value) {
                 return recipeName === value.recipeName;
             });
 
@@ -73,7 +73,6 @@
                 return +recipeId === value.id;
             });
 
-
             if (itemIndex > -1) {
                 if (recipes.splice(itemIndex, 1).length > 0) {
                     localStorage.Put(recipeStorageKey, recipes);
@@ -85,6 +84,10 @@
             }
 
             return false;
+        }
+
+        function empty() {
+            localStorage.Empty(recipeStorageKey);
         }
 
         function getRecipeById(recipeId) {
@@ -121,11 +124,6 @@
                     console.log('Error getting recipes list: ', error);
                 });
         }
-
-        ////
-        // Initialization (HACK)
-        ////
-        //loadRecipes();
     }
 })();
 

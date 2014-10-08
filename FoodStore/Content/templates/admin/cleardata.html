@@ -1,0 +1,36 @@
+<h2>Clear Cache Data</h2>
+
+<p class="alert alert-danger">
+    <strong>Warning:</strong> Are you sure you wish to clear the cache data? All products, categories and recipes selected will
+    be lost.
+</p>
+
+<div class="list-header">
+    <h4>Select the cache items to clear:</h4>
+</div>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-8">
+
+            <form class="form-horizontal" role="form">
+                <ul ng-repeat="item in vm.cacheItems" class="list-indented list-unstyled">
+                    <li>
+                        <input type="checkbox" name="{{item.name}}" id="{{item.name}}" ng-model="item.checked"
+                               ng-checked="item.checked">
+                        <label for="{{item.name}}" style="font-weight: normal;">{{item.name}} cache</label>
+                    </li>
+                </ul>
+                <div class="pull-left">
+                    <button class="btn btn-primary" ng-click="vm.clearData()">Clear Cache</button>
+                </div>
+
+                <div class="pull-right">
+                    <span ng-show="vm.clearCompleted" class="alert alert-info">Cache data has been reset to defaults.</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</p>

@@ -3,20 +3,20 @@
 (function () {
     angular
         .module('foodstore')
-        .controller('Admin', Admin);
+        .controller('ClearData', ClearData);
 
-    Admin.$inject = [
+    ClearData.$inject = [
         '$scope',
         'LocalStorageService',
         'ModalsService'
     ];
 
-    function Admin($scope, localStorage, modals) {
+    function ClearData($scope, localStorage, modals) {
         var vm = this;
         init();
 
         function init() {
-            vm.resetCompleted = false;
+            vm.clearCompleted = false;
             vm.cacheItems = [
                 { name: 'Product', key: 'PRODUCT-STORAGE-KEY', checked: false },
                 { name: 'Category', key: 'CATEGORY-STORAGE-KEY', checked: false },
@@ -24,7 +24,10 @@
             ];
         }
 
-        vm.resetData = function () {
+        ////
+        // Controller actions
+        ////
+        vm.clearData = function () {
             var modalOptions = {
                 prompt: 'Are you sure you wish to clear these cache items?',
                 useOverlay: true,
@@ -36,7 +39,7 @@
                             }
                         }
 
-                        vm.resetCompleted = true;
+                        vm.clearCompleted = true;
                         $scope.$apply();
                     }
                 }

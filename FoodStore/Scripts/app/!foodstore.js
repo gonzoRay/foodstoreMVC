@@ -42,9 +42,14 @@
                     controller: 'RecipeList',
                     controllerAs: 'vm'
                 })
-                .when('/resetdata', {
-                    templateUrl: 'Content/templates/admin/resetdata.html',
-                    controller: 'Admin',
+                .when('/cleardata', {
+                    templateUrl: 'Content/templates/admin/cleardata.html',
+                    controller: 'ClearData',
+                    controllerAs: 'vm'
+                })
+                .when('/loaddata', {
+                    templateUrl: 'Content/templates/admin/loaddata.html',
+                    controller: 'LoadData',
                     controllerAs: 'vm'
                 })
                 .when('/recipes/:id', {
