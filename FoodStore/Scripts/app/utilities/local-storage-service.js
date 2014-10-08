@@ -1,8 +1,11 @@
 "use strict";
 
 (function () {
-    angular.module('foodstore')
-        .factory('localStorageService', LocalStorageService);
+    angular
+        .module('foodstore')
+        .factory('LocalStorageService', LocalStorageService);
+
+    LocalStorageService.$inject = [];
 
     function LocalStorageService() {
         ////

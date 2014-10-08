@@ -1,7 +1,10 @@
 "use strict";
 (function () {
-    angular.module('foodstore')
-        .factory('functionsService', FunctionsService);
+    angular
+        .module('foodstore')
+        .factory('FunctionsService', FunctionsService);
+
+    FunctionsService.$inject = [];
 
     function FunctionsService() {
         ////

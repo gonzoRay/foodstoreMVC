@@ -1,11 +1,14 @@
-<h2 class="section-header">Recipes</h2>
+<h2 class="section-header">Recipe Index</h2>
 <div class="row">
     <div class="col-md-8">
         <div class="pull-right">
-            <button class="btn btn-default" ng-click="redirectAddRecipes()">Add Recipes</button>
+            <button class="btn btn-default" ng-click="vm.redirectAddRecipe()">Add Recipe</button>
+        </div>
+        <div class="pull-left">
+            <span ng-show="vm.recipes.length === 0">No recipes found</span>
         </div>
         <div>&nbsp;</div>
-        <ul ng-repeat="recipe in recipes" class="list-indented list-unstyled">
+        <ul ng-repeat="recipe in vm.recipes" class="list-indented list-unstyled">
             <li><a href="#/recipes/{{recipe.id}}">{{recipe.recipeName}}</a></li>
         </ul>
     </div>

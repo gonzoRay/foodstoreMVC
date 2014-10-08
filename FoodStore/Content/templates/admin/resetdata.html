@@ -1,7 +1,7 @@
 <h2>Reset Data Cache</h2>
 
 <p class="alert alert-danger">
-    <strong>Warning:</strong> Are you sure you wish to reset the cache data? All products, categories and recipes will
+    <strong>Warning:</strong> Are you sure you wish to reset the cache data? All products, categories and recipes reset will
     be lost.
 </p>
 
@@ -15,7 +15,7 @@
         <div class="col-md-8">
 
             <form class="form-horizontal" role="form">
-                <ul ng-repeat="item in cacheItems" class="list-indented list-unstyled">
+                <ul ng-repeat="item in vm.cacheItems" class="list-indented list-unstyled">
                     <li>
                         <input type="checkbox" name="{{item.name}}" id="{{item.name}}" ng-model="item.checked"
                                ng-checked="item.checked">
@@ -23,11 +23,11 @@
                     </li>
                 </ul>
                 <div class="pull-left">
-                    <button class="btn btn-primary" ng-click="resetData()">Reset Cache</button>
+                    <button class="btn btn-primary" ng-click="vm.resetData()">Reset Cache</button>
                 </div>
 
                 <div class="pull-right">
-                    <span ng-show="resetCompleted === true" class="alert alert-info">Cache data has been reset to defaults.</span>
+                    <span ng-show="vm.resetCompleted" class="alert alert-info">Cache data has been reset to defaults.</span>
                 </div>
             </form>
         </div>

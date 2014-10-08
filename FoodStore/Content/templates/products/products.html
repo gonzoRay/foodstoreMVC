@@ -1,13 +1,13 @@
-<h2 class="section-header">Products</h2>
+<h2 class="section-header">Available Products</h2>
 
 <div class="fluid container">
     <div class="row">
         <div class="col-md-8">
             <div class="pull-right">
-                <button class="btn btn-default" ng-click="redirectAddProducts()">Add Products</button>
+                <button class="btn btn-default" ng-click="vm.redirectAddProducts()">Add Products</button>
             </div>
             <div>&nbsp;</div>
-            <ul ng-repeat="product in products" class="list-indented list-unstyled">
+            <ul ng-repeat="product in vm.products | orderBy: '-id'" class="list-indented list-unstyled">
                 <li>
                 <li>{{product.productName}}</li>
             </ul>

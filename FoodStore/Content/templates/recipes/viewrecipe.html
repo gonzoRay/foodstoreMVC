@@ -1,48 +1,53 @@
-<h2>{{currentRecipe.recipeName}}</h2>
+<h2>{{vm.currentRecipe.recipeName}}</h2>
 
 <div class="container-fluid">
-    <div class="row">
+    <div class="row top-buffer">
         <div class="col-md-12">
             <div class="pull-right">
-                <button class="btn btn-danger" ng-click="removeRecipe()">Remove Recipe</button>
+                <button class="btn btn-danger" ng-click="vm.removeRecipe()">Remove Recipe</button>
+            </div>
+            <div class="pull-left">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <button class="btn btn-link" ng-click="vm.returnToRecipes()">
+                    Return to Recipe Index
+                </button>
             </div>
             <div>&nbsp;</div>
         </div>
     </div>
 
-    Description:
-    <blockquote>
-        {{currentRecipe.description}}
-    </blockquote>
+    <div class="row top-buffer"> Description:
+        <blockquote>
+            <em>{{vm.currentRecipe.description}}</em>
+        </blockquote>
+    </div>
 
+    <div class="row top-buffer">
+            <div class="list-header">
+                <span class="list-header">Categories:</span>
+                <ul class="list-inline" style="display:inline" ng-repeat="category in vm.currentRecipe.categories">
+                    <li class="category-tag">{{category}}</li>
+                </ul>
+            </div>
 
+        <div class="row top-buffer">&nbsp;</div>
         <div class="row">
-            <div class="col-md-12">
-                <div class="list-header">
-                    <span class="list-header">Categories:</span>
-                    <ul class="list-inline" style="display:inline" ng-repeat="category in currentRecipe.categories">
-                        <li class="category-tag">{{category}}</li>
+            <div class="col-md-4">
+                <div>
+                    <div class="list-header">Ingredients:</div>
+                    <ul class="list-indented list-unstyled" ng-repeat="product in vm.currentRecipe.ingredients">
+                        <li>
+                            <dt>{{product.name}}</dt>
+                            <dd>{{product.quantity}} {{product.unit}}</dd>
+                        </li>
                     </ul>
                 </div>
             </div>
-            <div class="row">&nbsp;</div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div>
-                        <div class="list-header">Ingredients:</div>
-                        <ul class="list-indented list-unstyled" ng-repeat="product in currentRecipe.ingredients">
-                            <li>
-                                <dt>{{product.name}}</dt>
-                                <dd>{{product.quantity}} {{product.unit}}</dd>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="list-header">Directions:</div>
-                    <div class="well" ng-bind-html="currentRecipe.directions | unsafe">
-                    </div>
+            <div class="col-md-8">
+                <div class="list-header">Directions:</div>
+                <div class="well" ng-bind-html="vm.currentRecipe.directions | unsafe">
                 </div>
             </div>
         </div>
     </div>
+</div>

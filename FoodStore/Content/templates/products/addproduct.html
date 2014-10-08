@@ -1,14 +1,22 @@
 <h2>Add Product</h2>
-<form class="form-horizontal" role="form">
-    <div class="form-group form-inline">
-        <label for="productName" class="col-sm-2 control-label">Product Name:</label>
-        <input class="form-control" id="productName" type="text" ng-model="newProduct">
-        <input type="submit" class="btn btn-success" value="Add Product" ng-click="addProduct()">
+<div class="fluid container">
+    <div class="row top-buffer">
+        <div class="col-md-12">
+            <form class="form-horizontal" role="form">
+                <div class="form-group form-inline">
+                    <input class="form-control" id="productName" type="text" ng-model="vm.newProductName">
+                    <input type="submit" class="btn btn-success" value="Add Product" ng-click="vm.addProduct()">
+                </div>
+            </form>
+        </div>
     </div>
-</form>
-
+    <div class="row top-buffer">
+        <span class="text-warning" ng-show="vm.productExists">You already have {{vm.lastTakenProductName}}.</span>
+    </div>
+    <div>&nbsp;</div>
+</div>
 <div>
-    <ul ng-repeat="product in products | orderBy: '-id'">
+    <ul ng-repeat="product in vm.products | orderBy: '-id'">
         <li>{{product.productName}}</li>
     </ul>
 </div>

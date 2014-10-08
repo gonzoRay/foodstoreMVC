@@ -1,14 +1,22 @@
 <h2>Add Category</h2>
-<form class="form-horizontal" role="form">
-    <div class="form-group form-inline">
-        <label for="categoryName" class="col-sm-2 control-label">Category Name:</label>
-        <input class="form-control" id="categoryName" type="text" ng-model="newCategory">
-        <input type="submit" class="btn btn-success" value="Add Category" ng-click="addCategory()">
+<div class="fluid container">
+    <div class="row top-buffer">
+        <div class="col-md-12">
+            <form name="addCategoryForm" class="form-horizontal" role="form">
+                <div class="form-group form-inline">
+                    <input class="form-control" id="categoryName" type="text" ng-model="vm.newCategoryName">
+                    <input type="submit" class="btn btn-success" value="Add Category" ng-click="vm.addCategory()">
+                </div>
+            </form>
+        </div>
     </div>
-</form>
-<div>&nbsp;</div>
-<div>
-    <ul ng-repeat="category in categories">
-        <li>{{category.categoryName}}</li>
-    </ul>
+    <div class="row top-buffer">
+        <span class="text-warning" ng-show="vm.categoryExists">{{vm.lastTakenCategoryName}} already exists.</span>
+    </div>
+    <div>&nbsp;</div>
+    <div>
+        <ul ng-repeat="category in vm.categories | orderBy: '-id'">
+            <li>{{category.categoryName}}</li>
+        </ul>
+    </div>
 </div>

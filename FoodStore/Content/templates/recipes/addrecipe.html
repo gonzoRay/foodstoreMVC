@@ -1,36 +1,39 @@
 <h2>Add Recipe</h2>
 <form role="form">
-
     <div class="container-fluid">
+        <div class="row top-buffer">
+            <span class="text-warning" ng-show="vm.existingRecipeId > -1">A recipe by this name already exists.</span>
+        </div>
+        <div>&nbsp;</div>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="recipeName" class="control-label">Recipe Name</label>
-                    <input class="form-control" id="recipeName" type="text" ng-model="newRecipe.recipeName">
+                    <input class="form-control" id="recipeName" type="text" ng-model="vm.newRecipe.recipeName">
                 </div>
                 <div class="form-group">
                     <label for="description" class="control-label">Description</label>
-                    <textarea class="form-control" id="description" ng-model="newRecipe.description"></textarea>
+                    <textarea class="form-control" id="description" ng-model="vm.newRecipe.description"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="directions" class="control-label">Directions</label>
-                    <textarea class="form-control" id="directions" style="height:200px;" ng-model="newRecipe.directions"></textarea>
+                    <textarea class="form-control" id="directions" style="height:200px;" ng-model="vm.newRecipe.directions"></textarea>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group form-inline">
                     <label for="categories" class="control-label">Categories</label>
                     <br>
-                    <select class="form-control" id="categories" ng-model="selectedCategories"
-                            ng-options="item.categoryName for item in availableCategories">
+                    <select class="form-control" id="categories" ng-model="vm.selectedCategories"
+                            ng-options="item.categoryName for item in vm.availableCategories">
                         <option value="">-- add relevant --</option>
                     </select>
-                    <button class="btn btn-default" id="addCategory" ng-click="addCategory()">Add</button>
+                    <button class="btn btn-default" id="addCategory" ng-click="vm.addCategory()">Add</button>
                 </div>
                 <div class="form-group">
                     <div class="list-header">
-                        <ul class="list-inline" style="display:inline" ng-model="newRecipe.categories"
-                                ng-repeat="category in newRecipe.categories">
+                        <ul class="list-inline" style="display:inline" ng-model="vm.newRecipe.categories"
+                                ng-repeat="category in vm.newRecipe.categories">
                             <li class="category-tag">{{category}}</li>
                         </ul>
                     </div>
@@ -42,7 +45,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group  pull-right">
-                <input type="submit" class="btn btn-success" value="Add Recipe" ng-click="addRecipe()">
+                <input type="submit" class="btn btn-success" value="Add Recipe" ng-click="vm.addRecipe()">
             </div>
         </div>
     </div>

@@ -2,58 +2,46 @@
 
 (function () {
 
-    angular.module('foodstore')
-        .controller('RecipeDetailController',
-        [
-            '$scope',
-            '$routeParams',
-            '$location',
-            'localStorageService',
-            'functionsService',
-            RecipeDetailController
-        ]);
+    angular
+        .module('foodstore')
+        .controller('RecipeDetail', RecipeDetail);
 
-    function RecipeDetailController($scope, $routeParams, $location, localStorage, func) {
-        var recipeStorageKey = 'RECIPE-STORAGE-KEY';
+    RecipeDetail.$inject = [
+        '$scope',
+        '$routeParams',
+        '$location',
+        'RecipeService',
+        'ModalsService'
+    ];
 
-        initScope();
+    function RecipeDetail($scope, $routeParams, $location, recipe, modals) {
+        var vm = this;
 
-        function initScope() {
+        init();
+
+        function init() {
             var recipeId = $routeParams.id;
-            $scope.currentRecipe = getRecipeById(recipeId);
+            vm.currentRecipe = recipe.GetById(recipeId);
 
-            $scope.removeRecipe = function() {
-                var recipes = localStorage.Get(recipeStorageKey);
-                var itemIndex = func.Array.IndexWhere(recipes, function(value) {
-                    return $scope.currentRecipe.id === value.id;
-                });
-
-                recipes.splice(itemIndex, 1);
-                localStorage.Put(recipeStorageKey, recipes);
-                $location.path('/recipes');
-
+            vm.removeRecipe = function () {
+                var modalOptions = {
+                    prompt: 'Are you sure you wish to remove this recipe?',
+                    useOverlay: true,
+                    callback: function (proceed) {
+                        if (proceed) {
+                            if (recipe.Remove(recipeId)) {
+                                $location.path('/recipes');
+                                $scope.$apply();
+                            }
+                        }
+                    }
+                };
+                modals.ShowConfirm(modalOptions);
             };
-        }
 
-        function getRecipeById(id) {
-            var allRecipes = localStorage.Get(recipeStorageKey);
-
-            if(allRecipes === null || allRecipes.length < 1) {
-                console.log('No recipes found');
-                return;
-            }
-
-            /*for (var r = 0; r < allRecipes.length; r++) {
-                if (allRecipes[r].id === +id) {
-                    return allRecipes[r];
-                }
-            }*/
-
-            var recipeIndex = func.Array.IndexWhere(allRecipes, function(recipe) {
-                return +id === recipe.id;
-            });
-
-            return allRecipes[recipeIndex];
+            vm.returnToRecipes = function () {
+                $location.path('/recipes');
+            };
         }
     }
 })();

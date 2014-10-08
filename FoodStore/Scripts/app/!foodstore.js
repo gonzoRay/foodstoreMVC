@@ -1,6 +1,11 @@
 ﻿"use strict";
 (function () {
-    angular.module('foodstore', ['ngRoute', 'ngResource'])
+    angular
+        .module('foodstore', [
+            'ngRoute',
+            'ngResource',
+            'foodstore.ui'
+        ])
         .config(function ($routeProvider, $locationProvider) {
             $locationProvider.html5mode = true;
             $routeProvider
@@ -9,35 +14,43 @@
                 })
                 .when('/products', {
                     templateUrl: '/Content/templates/products/products.html',
-                    controller: 'ProductsController'
+                    controller: 'Product',
+                    controllerAs: 'vm'
                 })
                 .when('/categories', {
                     templateUrl: '/Content/templates/categories/categories.html',
-                    controller: 'CategoriesController'
+                    controller: 'Category',
+                    controllerAs: 'vm'
                 })
                 .when('/recipes', {
                     templateUrl: '/Content/templates/recipes/recipes.html',
-                    controller: 'RecipeListController'
+                    controller: 'RecipeList',
+                    controllerAs: 'vm'
                 })
                 .when('/products/add', {
                     templateUrl: '/Content/templates/products/addproduct.html',
-                    controller: 'ProductsController'
+                    controller: 'Product',
+                    controllerAs: 'vm'
                 })
                 .when('/categories/add', {
                     templateUrl: '/Content/templates/categories/addcategory.html',
-                    controller: 'CategoriesController'
+                    controller: 'Category',
+                    controllerAs: 'vm'
                 })
                 .when('/recipes/add', {
                     templateUrl: '/Content/templates/recipes/addrecipe.html',
-                    controller: 'RecipeListController'
+                    controller: 'RecipeList',
+                    controllerAs: 'vm'
                 })
                 .when('/resetdata', {
                     templateUrl: 'Content/templates/admin/resetdata.html',
-                    controller: 'AdminController'
+                    controller: 'Admin',
+                    controllerAs: 'vm'
                 })
                 .when('/recipes/:id', {
                     templateUrl: 'Content/templates/recipes/viewrecipe.html',
-                    controller: 'RecipeDetailController'
+                    controller: 'RecipeDetail',
+                    controllerAs: 'vm'
                 })
                 .otherwise({ redirectTo: '/' });
         });

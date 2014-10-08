@@ -1,42 +1,48 @@
 "use strict";
 
 (function () {
-    angular.module('foodstore')
-        .controller('AdminController',
-        [
-            '$scope',
-            'localStorageService',
-            AdminController
-        ]
-    );
+    angular
+        .module('foodstore')
+        .controller('Admin', Admin);
 
-    function AdminController($scope, localStorage) {
-        initScope();
+    Admin.$inject = [
+        '$scope',
+        'LocalStorageService',
+        'ModalsService'
+    ];
 
-        function initScope() {
-            $scope.resetCompleted = false;
-            $scope.cacheItems = [
+    function Admin($scope, localStorage, modals) {
+        var vm = this;
+        init();
+
+        function init() {
+            vm.resetCompleted = false;
+            vm.cacheItems = [
                 { name: 'Product', key: 'PRODUCT-STORAGE-KEY', checked: false },
                 { name: 'Category', key: 'CATEGORY-STORAGE-KEY', checked: false },
                 { name: 'Recipe', key: 'RECIPE-STORAGE-KEY', checked: false }
             ];
         }
 
-        $scope.resetData = function () {
-            for(var i = 0; i < $scope.cacheItems.length; i++) {
-                if($scope.cacheItems[i].checked) {
-                    localStorage.Empty($scope.cacheItems[i].key);
-                }
-            }
+        vm.resetData = function () {
+            var modalOptions = {
+                prompt: 'Are you sure you wish to clear these cache items?',
+                useOverlay: true,
+                callback: function (proceed) {
+                    if (proceed) {
+                        for (var i = 0; i < vm.cacheItems.length; i++) {
+                            if (vm.cacheItems[i].checked) {
+                                localStorage.Empty(vm.cacheItems[i].key);
+                            }
+                        }
 
-            //TODO: Find out why this doesn't work
-            /*for(var cacheItem in $scope.cacheItems){
-                if(cacheItem.checked) {
-                    localStorage.Empty(cacheItem.key);
+                        vm.resetCompleted = true;
+                        $scope.$apply();
+                    }
                 }
-            }*/
+            };
 
-            $scope.resetCompleted = true;
+            modals.ShowConfirm(modalOptions);
         };
     }
 })();
